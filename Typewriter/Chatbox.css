@@ -1,0 +1,120 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:700);
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    text-shadow: 0 0 1px #000, 0 0 2px #000;
+    background: {background_color};
+    font-family: 'Courier Prime', monospace;
+    font-weight: 700;
+    font-size: {font_size};
+    line-height: 1.5em;
+    color: {text_color};
+  
+}
+
+#log>div {
+    animation: fadeInLeft .3s ease forwards, fadeOut 0.5s ease {message_hide_delay} forwards;
+    -webkit-animation: fadeInLeft .3s ease forwards, fadeOut 0.5s ease {message_hide_delay} forwards;
+}
+
+.colon {
+    display: none;
+}
+
+#log {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0 10px 10px;
+    width: 100%;
+}
+
+#log > div {
+	margin-left: 0.2em;
+}
+
+#log>div:not(:first-child) {
+    margin-top: 0.2em;
+}
+
+#log>div.deleted {
+    visibility: hidden;
+}
+
+#log .emote {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    padding: 0.4em 0.2em;
+    position: relative;
+}
+
+#log .emote img {
+    display: inline-block;
+    height: 1em;
+    opacity: 0;
+}
+
+#log .meta {
+    width: 35%;
+    text-align: left;
+    padding-right: 0.5em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+#log .message-container {
+  	display: block;
+    
+  	margin-left: 2ch;
+}
+
+.badge {
+    display: inline-block;
+    margin-right: 0.2em;
+    position: relative;
+    height: 1em;
+    vertical-align: middle;
+    top: -0.1em;
+}
+
+.name {
+  	font-weight: bold;
+}
+
+.message {
+    /* display: none; */
+  word-wrap: break-word;
+}
+
+
+.blink:before {
+  content: "_";
+  font-weight: bold;
+}
+
+.blink {
+  display: inline;
+  animation: blinker 0.5s linear infinite;
+  margin-left: -1ch;
+}
+
+#log>div:not(:last-child) #caret-complete:before{
+	content: "";
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
