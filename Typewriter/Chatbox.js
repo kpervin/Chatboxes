@@ -24,21 +24,20 @@ async function typeEffect(inp) {
 
     var text = formatEmotes(temp);
 
-    await new Promise(resolve => {
-        setTimeout(() => {
-            var i = 0;
-            var timer = setInterval(function () {
-                if (i < text.length) {
-                    $('#message' + o).append(text[i]);
-                    i++;
-                } else {
-                    clearInterval(timer);
-                    resolve();
-                }
-            }, speed);
-        }, 300);
-    });
-    document.getElementById('caret' + o).id = 'caret-complete';
+    function typewriter(o, text, i) {
+        if (i < text.length) {
+            $('#message' + o).append(text[i]);
+            i++;
+            setTimeout(function () {
+                typewriter(o, text, i);
+            }, 30);
+        } else {
+            document.getElementById('caret' + o).id = 'caret-complete';
+        }
+    }
+    setTimeout(() => {
+        typewriter(o, text, 0);
+    }, 300);
 }
 
 function formatEmotes(text) {
@@ -71,7 +70,7 @@ function formatEmotes(text) {
 
         splitText.splice(start, 1, emote);
     }
-    splitText = splitText.filter(val => typeof val !== 'undefined');
+    splitText = splitText.filter((val) => typeof val !== 'undefined');
 
     return splitText;
 }
