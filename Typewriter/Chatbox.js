@@ -10,6 +10,8 @@ document.addEventListener('onEventReceived', function (obj) {
     typeEffect(id_index);
 });
 
+
+
 var speed = 30;
 var id_index = 1;
 
@@ -19,8 +21,13 @@ async function typeEffect(inp) {
     document.getElementById('caret').id = 'caret' + o;
 
     const temp = $('#message' + o).html();
+    const message = $('#message' + o).text();
 
     $('#message' + o).text('');
+
+    if(/^#heh$/.test(message)){
+        return $('#message'+o).append("<img height='200px' src={hehField} />")
+    }
 
     var text = formatEmotes(temp);
 
