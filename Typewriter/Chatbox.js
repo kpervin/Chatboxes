@@ -10,8 +10,6 @@ document.addEventListener('onEventReceived', function (obj) {
     typeEffect(id_index);
 });
 
-
-
 var speed = 30;
 var id_index = 1;
 
